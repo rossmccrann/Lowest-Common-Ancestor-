@@ -27,7 +27,7 @@ public class Binary_Tree {
         Node right_lca = findLCA(node.right, n1, n2); 
   
         /* 
-         If left_lca and right_lca don't retrun NULL, then a key is present in both subtrees/
+         If left_lca and right_lca don't return NULL, then a key is present in both subtrees/
          This node is the Lowest Common Ancestor
          */
         if (left_lca!=null && right_lca!=null) 
