@@ -2,10 +2,10 @@ import java.util.ArrayList;
 
 public class DAG {
 
-		DAGNode root;
+DAGNode root;
 		
-		DAGNode dagFindLCA(DAGNode root, DAGNode left_lca, DAGNode right_lca){
-        if (root==null) return null;
+public static DAGNode dagFindLCA(DAGNode root, DAGNode left_lca, DAGNode right_lca){
+        if (root == null) return null;
         if (root == left_lca ||root == right_lca) return root;
         if(left_lca.data==right_lca.data)        return left_lca;
 
@@ -13,7 +13,6 @@ public class DAG {
         if( left_lca.p.size()==0 || right_lca.p.size() == 0) return null;
         for(int i=0; i < left_lca.p.size();i++){
             for(int j=0;j < right_lca.p.size();j++){
-
                 if(left_lca.p.get(i).data == right_lca.p.get(j).data){
                     lca.add(left_lca.p.get(i));
                 }
@@ -22,13 +21,8 @@ public class DAG {
         }
 
         if(lca.size() == 0){
-            if (left_lca.data > right_lca.data) {
-                lca.add(dagFindLCA(root,left_lca.p.get(0), right_lca));
-            }
-
-            else {
-                lca.add(dagFindLCA(root,left_lca,right_lca.p.get(0)));
-            }
+            if (left_lca.data > right_lca.data) lca.add(dagFindLCA(root,left_lca.p.get(0), right_lca));
+            else lca.add(dagFindLCA(root,left_lca,right_lca.p.get(0)));
         }
 
 
@@ -38,8 +32,6 @@ public class DAG {
                 if (lca.get(i).data > maxTemp.data) maxTemp = lca.get(i);
             }
             return maxTemp;
-
-
 
     }
 	
